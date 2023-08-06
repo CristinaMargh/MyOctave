@@ -1,5 +1,6 @@
 # Project2-PCLP1
 Copyright Cristina-Andreea Margheanu 313CAb 2022-2023
+
 In cadrul problemei am folosit urmatoarele functii utile pentru
 rezolvarea cerintelor si functiilor specificate in main:
 -alocarea dinamica a memoriei pentru o matrice: aceasta are ca parametrii 
