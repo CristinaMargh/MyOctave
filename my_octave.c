@@ -1,12 +1,11 @@
-// Copyright Cristina-Andreea Margheanu 313CAb 2022-2023
 #include <stdio.h>
-#include <stdlib.h> // functiile de memorie
+#include <stdlib.h> // memory functions
 #define MOD 10007
-// functie pentru  alocarea memorie intr-o matrice
+
 int **alloc_matrix(int m, int n)
 {
 	int **a;
-	// aloc memorie pentru vectorul de pointeri(de linii)
+	// allocate memory for the pointer vector (of lines)
 	a = malloc(m * sizeof(int *));
 	if (a == 0) {
 		fprintf(stderr, "malloc failed\n");
@@ -16,12 +15,12 @@ int **alloc_matrix(int m, int n)
 		*(a + i) = malloc(n * sizeof(int));
 	if (a[i] == 0) {
 		fprintf(stderr, "malloc failed\n");
-	// eliberam memoria alocata liniilor
+	// free the allocated memory for the lines
 	while (--i >= 0)
 		free(a[i]);
 	free(a);
 	return NULL;
-	}
+		}
 	}
 	return a;
 }
@@ -33,7 +32,6 @@ void read_matrix(int m, int n, int **a)
 			scanf("%d", *(a + i) + j);
 }
 
-// functie pentru eliberarea unei matrice alocata
 
 void free_matrix(int m, int **a)
 {
@@ -42,18 +40,18 @@ void free_matrix(int m, int **a)
 	free(a);
 }
 
-// functie pentru introducerea matricelor in vectorul de matrici
+// function for inserting matrices into the matrix vector
 
 int ***include(int ***new, int *index, int **row, int **column, int m, int n)
 {
-	// matricea pe care vream sa o adaugam la colectie
+	// the matrix we want to add tot he collection
 	int **a = alloc_matrix(m, n);
 	read_matrix(m, n, a);
 	if (new)
 		new = realloc(new, ((*index) + 1) * sizeof(int **));
 	else
 		new = malloc(sizeof(int **));
-	new[*index] = a; // includem matricea citita
+	new[*index] = a; // include the matrix
 
 	if (*row)
 		*row = realloc(*row, ((*index) + 1) * sizeof(int));
@@ -67,7 +65,7 @@ int ***include(int ***new, int *index, int **row, int **column, int m, int n)
 		*column = malloc(sizeof(int));
 	(*column)[*index] = n;
 
-	*index = (*index) + 1; // crestem numarul de matrice
+	*index = (*index) + 1; 
 	return new;
 }
 
