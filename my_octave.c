@@ -93,30 +93,30 @@ void dimension(int index, int *row, int *column)
 	if (number < 0 || number > index - 1) {
 		printf("No matrix with the given index\n");
 	} else {
-		int m = row[number]; // retinem dimensiunile matricei cerute
+		int m = row[number]; 
 		int n = column[number];
 		printf("%d %d\n", m, n);
 		}
 	}
 
-// functie pentru redimensionarea unei matrice
+// function for resizing a matrix
 
 void cut(int ***new, int index, int *row, int *column)
 {
 	int number, l, c;
-	scanf("%d", &number); // numarul matricei pe care trebuie sa o redimensionam
+	scanf("%d", &number); //the number of the matrix we need to resize
 	scanf("%d", &l);
-	int *cutr = malloc(l * sizeof(int)); // vectorul de linii
+	int *cutr = malloc(l * sizeof(int)); // array of lines
 	for (int i = 0; i < l; i++)
 		scanf("%d", &cutr[i]);
 	scanf("%d", &c);
-	int *cutc = malloc(c * sizeof(int)); // vectorul de coloane
+	int *cutc = malloc(c * sizeof(int)); // array of columns
 	for (int j = 0; j < c; j++)
 		scanf("%d", &cutc[j]);
 	if (number < 0 || number > index - 1) {
 		printf("No matrix with the given index\n");
 	} else {
-		int **cut = alloc_matrix(l, c); // matricea redimensionata
+		int **cut = alloc_matrix(l, c); 
 		for (int i = 0; i < l; i++)
 			for (int j = 0; j < c ; j++)
 				cut[i][j] = new[number][cutr[i]][cutc[j]];
@@ -174,20 +174,20 @@ void sort_matrix(int ***new, int index, int *row, int *column)
 
 void transpose_matrix(int ***new, int index, int *row, int *column)
 {
-	int number; // numarul matricei pe care trebuie sa o transpunem
+	int number; 
 	scanf("%d", &number);
 	if (number < 0 || number > index - 1) {
 		printf("No matrix with the given index\n");
 	} else {
 		int m = row[number];
 		int n = column[number];
-	// alocam memorie pentru matricea transpusa
+	// allocate memory for the transpose matrix
 	int **t = alloc_matrix(n, m);
 	for (int i = 0; i < m ; i++)
 		for (int j = 0 ; j < n; j++)
 			t[j][i] = new[number][i][j];
 	free_matrix(m, new[number]);
-	row[number] = n; // modificarile in vectorii de linii si coloane
+	row[number] = n; 
 	column[number] = m;
 	new[number] = t;
 	}
@@ -226,19 +226,19 @@ int ***multiply(int ***new, int *index, int **row, int **column, int n1, int n2)
 
 int **power_log(int **a, int n, int pow)
 {
-	int **ans; // matrice unde stocam rezultatul
+	int **ans; // result
 
 	if (pow == 1) {
 		ans = alloc_matrix(n, n);
 		for (int i = 0; i < n; i++)
 			for (int j = 0; j < n; j++)
 				ans[i][j] = a[i][j];
-		return ans; // intoarce aceeasia matrice
+		return ans; 
 	}
 
 	if (pow % 2 == 0) {
 		int **a2 = alloc_matrix(n, n);
-	// am alocat spatiu pentru matricea ridicata la patrat
+	// memory for the power matrix
 		for (int i = 0; i < n; i++)
 			for (int j = 0; j < n; j++) {
 				a2[i][j] = 0;
@@ -288,7 +288,6 @@ void power(int ***new, int index, int *row, int *column)
 		return;
 	}
 	int **result = power_log(new[number], row[number], pow);
-	// nu mai modificam dimensiunile
 	free_matrix(row[number], new[number]);
 	new[number] = result;
 }
@@ -327,10 +326,10 @@ void delete(int ***new, int index, int *row, int *column)
 
 int main(void)
 {
-	int index = 0; // numarul matricei cu care urmeaza sa operam
-	int *row = NULL; // vector ce retine numarul de linii
+	int index = 0; 
+	int *row = NULL; 
 	int *column = NULL;
-	int ***colection = NULL; // vectorul de matrice
+	int ***colection = NULL; // array of matrix
 	char q;
 	int m, n, n1, n2;
 	while (scanf("%c", &q)) {
@@ -369,7 +368,7 @@ int main(void)
 		}
 			printf("Unrecognized command\n");
 	} } } } } } } } }
-		getc(stdin); // evitam enterul
+		getc(stdin); // enter
 	}
 	return 0;
 }
