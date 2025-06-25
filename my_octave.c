@@ -71,7 +71,7 @@ int ***include(int ***new, int *index, int **row, int **column, int m, int n)
 
 void print_matrix(int ***new, int index, int *row, int *column)
 {
-	int number; // numarul matricei pe care trebuie sa o afisam
+	int number; // the number of the matrix we want to display
 	scanf("%d", &number);
 	if (number < 0 || number > index - 1) {
 		printf("No matrix with the given index\n");
