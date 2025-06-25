@@ -1,6 +1,5 @@
 # Project2-PCLP1
 
-**Copyright Cristina-Andreea Margheanu – 313CAb, 2022–2023**
 
 This project implements a matrix management system in C, with functionalities for creating, modifying, and performing operations on a dynamic list of matrices.
 
